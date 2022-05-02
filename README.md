@@ -1,6 +1,6 @@
-#Projeto Pokemon
+# Projeto Pokemon
 
-**Back-end**
+## **O que foi usado**
  - [X] Axios
  - [X] MySQL
  - [X] Node.js
@@ -11,13 +11,13 @@ Esta API simula um jogo de pokemon
 
 Sinta-se à vontade para fazer o fork e fazer o que quiser com o projeto.
 
-#Instalação
+# Instalação
 De dentro do diretório do aplicativo, execute o seguinte:
 
-**npm install**
+>**npm install**
 
 Para ativar o servidor execute o seguinte comando:
 
-**npm start**
+>**npm start**
 
 Exportei a coleção do postman para teste e salvei em um arquivo JSON. "Dados_Postman", para usar basta copiar e acessar a opção "import" do postamn e colar.
