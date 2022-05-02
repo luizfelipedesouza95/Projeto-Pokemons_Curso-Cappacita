@@ -10,9 +10,7 @@ async function salvarpokemons(pokemon) {
           resistencia_pokemon: pokemon.resistencia,
           hp_pokemon: pokemon.hp
      }
-
-     const result = await connectionDataBase(`Banco_Pokemon.Pokemons`).insert(InsertPokemon);
-
+      const result = await connectionDataBase('Banco_Pokemon.Pokemons').insert(InsertPokemon);
      if (result) {
          return {
                ...pokemon,
@@ -23,19 +21,19 @@ async function salvarpokemons(pokemon) {
          return {
              error: "Deu erro na inserção!"
          }
-     }
+     } 
 }
 
 //MOSTRAR UM POKEMON
 async function mostrarpokemon(id) {
-     const result = await connectionDataBase(`Banco_Pokemon.Pokemons`).where({ id_pokemon: id });/*.select( 'nome_pokemon', 'tipo_pokemon', 'fraqueza_pokemon', 'resistencia_pokemon', 'hp_pokemon','id_pokemon',);*/
+      const result = await connectionDataBase('Banco_Pokemon.Pokemons').where({ id_pokemon: id });
 
      return result[0]
 }
 
 //MOSTRAR TODOS POKEMONS
 async function mostrarpokemons() {
-     const result = await connectionDataBase(`Banco_Pokemon.Pokemons`)
+     const result = await connectionDataBase('Banco_Pokemon.Pokemons')
      return result
 }
 
@@ -48,7 +46,7 @@ async function atualizarpokemon(id, pokemon) {
           resistencia_pokemon: pokemon.resistencia,
           hp_pokemon: pokemon.hp
      }
-     const result = await connectionDataBase(`Banco_Pokemon.Pokemons`).where({ id_pokemon: id }).update(UpDatePokemon);
+     const result = await connectionDataBase('Banco_Pokemon.Pokemons').where({ id_pokemon: id }).update(UpDatePokemon);
 
      if (result) {
          return {
@@ -65,17 +63,25 @@ async function atualizarpokemon(id, pokemon) {
 
 //DELETAR POKEMONS
 async function deletarPokemon(id){
-     const result = await connectionDataBase(`Banco_Pokemon.Pokemons`).where({ id_pokemon: id}).del()
+     const result = await connectionDataBase('Banco_Pokemon.Pokemons').where({ id_pokemon: id}).del()
      
      return `Pokemon deletado!`
+
+}
+
+//DELETAR TODOS POKEMONS
+async function deletarPokemon(){
+     const result = await connectionDataBase('Banco_Pokemon.Pokemons').del()
+     
+     return `Pokemons deletados!`
 
 }
 
 //BATALHA DE POKEMONS
 async function batalhapokemon(id1, id2) {
 
-          const pokemon1 =  await connectionDataBase(`Banco_Pokemon.Pokemons`).where({ id_pokemon: id1 });
-          const pokemon2 =  await connectionDataBase(`Banco_Pokemon.Pokemons`).where({ id_pokemon: id2 });
+          const pokemon1 =  await connectionDataBase('Banco_Pokemon.Pokemons').where({ id_pokemon: id1 });
+          const pokemon2 =  await connectionDataBase('Banco_Pokemon.Pokemons').where({ id_pokemon: id2 });
           const  superefetivo = 40
           const efetivo = 20
           const naoefetivo = 10
@@ -106,8 +112,8 @@ async function batalhapokemon(id1, id2) {
                hp_pokemon: pokemon2[0].hp_pokemon
           }
 
-          const pokemonalterado2 =  await connectionDataBase(`Banco_Pokemon.Pokemons`).where({ id_pokemon: id1 }).update(batlepokemon1);
-          const pokemonalterado1 =  await connectionDataBase(`Banco_Pokemon.Pokemons`).where({ id_pokemon: id2 }).update(batlepokemon2);
+          const pokemonalterado2 =  await connectionDataBase('Banco_Pokemon.Pokemons').where({ id_pokemon: id1 }).update(batlepokemon1);
+          const pokemonalterado1 =  await connectionDataBase('Banco_Pokemon.Pokemons').where({ id_pokemon: id2 }).update(batlepokemon2);
 
           if(pokemon1[0].hp_pokemon < 0) pokemon1[0].hp_pokemon = 0
           if(pokemon2[0].hp_pokemon < 0) pokemon2[0].hp_pokemon = 0
@@ -118,7 +124,7 @@ async function batalhapokemon(id1, id2) {
      
  //CURAR POKEMONS
  async function curarPokemon(id){
-     const pokemonferido =  await connectionDataBase(`Banco_Pokemon.Pokemons`).where({ id_pokemon: id });
+     const pokemonferido =  await connectionDataBase('Banco_Pokemon.Pokemons').where({ id_pokemon: id });
      const pocao = 20
      const msgpokemon = "Curado"
 

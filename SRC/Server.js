@@ -45,6 +45,11 @@ app.delete("/pokemon/:id", async (req, res) => {
      res.send(await DataBase.deletarPokemon(req.params.id))
 })
 
+//DELETAR TODOS POKEMONS
+app.delete("/pokemons/delete", async (req, res) => {
+     res.send(await DataBase.deletarPokemon())
+})
+
 //BATALHA DE POKEMONS
 app.post("/batalha", async (req, res) => {
      res.send( await DataBase.batalhapokemon(req.body.id1, req.body.id2))

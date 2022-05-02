@@ -4,7 +4,7 @@
   "description": "Curso Cappacita",
   "main": "SRC/Server.js",
   "scripts": {
-    "start": "node SRC/Server.js",
+    "start": "node SRC/server.js",
     "dev": "nodemon SRC/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -15,9 +15,10 @@
     "express": "^4.17.1",
     "knex": "^0.95.10",
     "mysql": "^2.18.1",
-    "mysql2": "^2.3.0"
+    "mysql2": "^2.3.3"
   },
   "devDependencies": {
     "nodemon": "^2.0.12"
   }
+
 }
